@@ -24,7 +24,7 @@ Abra o terminal, navegue até a pasta `backend` e rode os comandos:
 `npx prisma migrate dev` (Para criar o banco de dados)
 `npm run start:dev` (Para iniciar o servidor)
 
-*(Lembre-se de criar o arquivo .env copiando do .env.example antes de rodar o banco)*
+*(é necessario criar o arquivo .env antes de rodar o banco)*
 
 ### 2. Frontend (Next.js)
 Abra um novo terminal, navegue até a pasta `frontend` e rode os comandos:
