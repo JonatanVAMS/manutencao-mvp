@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Equipamento {
+  id        Int      @id @default(autoincrement())
+  nome      String
+  tag       String   @unique
+  ordens    OrdemServico[]
+}
+
+model OrdemServico {
+  id            Int      @id @default(autoincrement())
+  descricao     String
+  status        String   @default("ABERTA")
+  equipamentoId Int
+  equipamento   Equipamento @relation(fields: [equipamentoId], references: [id])
+}
