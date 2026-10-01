@@ -8,7 +8,7 @@ export default function EquipamentosPage() {
 
   const buscarEquipamentos = async () => {
     try {
-      const res = await fetch("http://localhost:3001/equipamentos");
+      const res = await fetch("[https://maintflow-backend.onrender.com/equipamentos](https://maintflow-backend.onrender.com/equipamentos)");
       if (!res.ok) throw new Error("Backend desligado");
       const data = await res.json();
       setEquipamentos(data);
@@ -24,7 +24,7 @@ export default function EquipamentosPage() {
   const salvarEquipamento = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await fetch("http://localhost:3001/equipamentos", {
+      await fetch("[https://maintflow-backend.onrender.com/equipamentos](https://maintflow-backend.onrender.com/equipamentos)", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ nome }),

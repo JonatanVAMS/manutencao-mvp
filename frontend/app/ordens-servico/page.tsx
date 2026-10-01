@@ -11,7 +11,7 @@ export default function OrdensServicoPage() {
 
   const buscarOrdens = async () => {
     try {
-      const res = await fetch("http://localhost:3001/ordem-servico");
+      const res = await fetch("https://maintflow-backend.onrender.com/ordem-servico");
       if (!res.ok) throw new Error("Backend desligado");
       const data = await res.json();
       setOrdens(data);
@@ -22,7 +22,7 @@ export default function OrdensServicoPage() {
 
   const buscarEquipamentos = async () => {
     try {
-      const res = await fetch("http://localhost:3001/equipamentos");
+      const res = await fetch("https://maintflow-backend.onrender.com/equipamentos");
       const data = await res.json();
       setEquipamentos(data);
     } catch (error) {
@@ -38,7 +38,7 @@ export default function OrdensServicoPage() {
   const salvarOrdem = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await fetch("http://localhost:3001/ordem-servico", {
+      await fetch("https://maintflow-backend.onrender.com/ordem-servico", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ 
@@ -59,7 +59,7 @@ export default function OrdensServicoPage() {
     if (!confirmar) return;
 
     try {
-      await fetch(`http://localhost:3001/ordem-servico/${id}`, {
+      await fetch(`https://maintflow-backend.onrender.com/ordem-servico/${id}`, {
         method: "DELETE",
       });
       buscarOrdens(); 
