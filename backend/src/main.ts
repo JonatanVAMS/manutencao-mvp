@@ -1,6 +1,5 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import * as process from 'process'; // <-- Esta é a linha mágica que resolve o erro
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -8,7 +7,8 @@ async function bootstrap() {
   // Autoriza o frontend (Vercel) a comunicar com esta API
   app.enableCors(); 
   
-  // Permite que o Render utilize a porta dinâmica dele
+  // Ignora o aviso do TypeScript, pois o Node.js sabe o que é o process
+  // @ts-ignore
   await app.listen(process.env.PORT || 3001);
 }
 bootstrap();
