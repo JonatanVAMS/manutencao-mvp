@@ -5,6 +5,7 @@ import Link from "next/link";
 export default function EquipamentosPage() {
   const [equipamentos, setEquipamentos] = useState<any[]>([]);
   const [nome, setNome] = useState("");
+  const [tag, setTag] = useState("");
 
   const buscarEquipamentos = async () => {
     try {
@@ -27,9 +28,10 @@ export default function EquipamentosPage() {
       await fetch("https://maintflow-backend.onrender.com/equipamentos", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nome }),
+        body: JSON.stringify({ nome, tag }), 
       });
       setNome("");
+      setTag("");
       buscarEquipamentos();
     } catch (error) {
       console.error("Erro ao guardar", error);
@@ -58,18 +60,33 @@ export default function EquipamentosPage() {
               <h2 className="text-2xl font-bold text-slate-800 mb-6">Novo Cadastro</h2>
               
               <div className="flex flex-col gap-5">
-                <div>
-                  <label className="block text-sm font-bold text-slate-600 mb-2">Qual o nome da máquina?</label>
-                  <input
-                    type="text"
-                    placeholder="Ex: Torno CNC Mod. 4"
-                    value={nome}
-                    onChange={(e) => setNome(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-200 text-slate-800 placeholder-slate-400 p-3.5 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all"
-                    required
-                  />
+                <div className="flex gap-4">
+                  <div className="w-1/3">
+                    <label className="block text-sm font-bold text-slate-600 mb-2">TAG</label>
+                    <input
+                      type="text"
+                      placeholder="TRN-01"
+                      value={tag}
+                      onChange={(e) => setTag(e.target.value)}
+                      className="w-full bg-slate-50 border border-slate-200 text-slate-800 placeholder-slate-400 p-3.5 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all uppercase"
+                      required
+                    />
+                  </div>
+                  
+                  <div className="w-2/3">
+                    <label className="block text-sm font-bold text-slate-600 mb-2">Nome</label>
+                    <input
+                      type="text"
+                      placeholder="Torno CNC Mod. 4"
+                      value={nome}
+                      onChange={(e) => setNome(e.target.value)}
+                      className="w-full bg-slate-50 border border-slate-200 text-slate-800 placeholder-slate-400 p-3.5 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
+                      required
+                    />
+                  </div>
                 </div>
-                <button type="submit" className="w-full bg-indigo-600 text-white font-bold py-3.5 rounded-xl hover:bg-indigo-700 active:scale-95 transition-all shadow-lg shadow-indigo-200">
+
+                <button type="submit" className="w-full bg-indigo-600 text-white font-bold py-3.5 rounded-xl hover:bg-indigo-700 active:scale-95 transition-all shadow-lg shadow-indigo-200 mt-2">
                   Registar Máquina
                 </button>
               </div>
@@ -97,7 +114,10 @@ export default function EquipamentosPage() {
                         <div className="h-12 w-12 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center text-indigo-600 font-bold text-lg group-hover:scale-110 transition-transform">
                           {eq.nome.charAt(0).toUpperCase()}
                         </div>
-                        <span className="font-bold text-slate-700 text-lg">{eq.nome}</span>
+                        <div className="flex flex-col">
+                           <span className="font-bold text-slate-700 text-lg">{eq.nome}</span>
+                           <span className="text-slate-400 text-sm font-medium">TAG: {eq.tag || "N/A"}</span>
+                        </div>
                       </div>
                       <span className="bg-white text-slate-400 font-bold text-xs px-3 py-1.5 rounded-lg border border-slate-200 shadow-sm">
                         ID: {eq.id}
