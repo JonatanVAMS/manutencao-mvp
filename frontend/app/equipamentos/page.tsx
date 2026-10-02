@@ -45,7 +45,7 @@ export default function EquipamentosPage() {
             <p className="text-slate-500 mt-2 font-medium">Controlo central do seu parque industrial</p>
           </div>
           <Link href="/" className="bg-white border border-slate-200 hover:border-slate-300 text-slate-700 px-6 py-2.5 rounded-xl font-semibold shadow-sm transition-all hover:bg-slate-50 text-center">
-            Voltar ao Menu
+            Voltar ao Dashboard
           </Link>
         </div>
 
