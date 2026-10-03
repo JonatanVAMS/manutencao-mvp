@@ -35,7 +35,7 @@ export default function Home() {
             Maint<span className="text-blue-500">Flow</span>
           </h1>
           <p className="text-slate-400 font-medium text-lg">
-            Painel de Controlo e Engenharia de Manutenção
+            Painel de Controle de Manutenção
           </p>
         </div>
 
