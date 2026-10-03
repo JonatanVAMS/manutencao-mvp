@@ -1,4 +1,4 @@
-# MVP - ManitFlow
+# MVP - MaintFlow
 MVP para controle de Ordens de Serviço (OS), cadastro de máquinas e indicadores de desempenho de manutenção.
 
 ## Equipe
