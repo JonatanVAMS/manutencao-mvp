@@ -18,7 +18,13 @@ model Equipamento {
 model OrdemServico {
   id            Int         @id @default(autoincrement())
   descricao     String
+  
+  // Novos campos do Laudo Técnico
   resolucao     String?
+  tempoReparo   String?     
+  material      String?     
+  tecnico       String?     
+
   status        String      @default("PENDENTE")
   equipamentoId Int
   equipamento   Equipamento @relation(fields: [equipamentoId], references: [id], onDelete: Cascade)
