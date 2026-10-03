@@ -8,7 +8,7 @@ async function bootstrap() {
   app.enableCors(); 
   
   // Ignora o aviso do TypeScript, pois o Node.js sabe o que é o process
-  
+  // @ts-ignore
   await app.listen(process.env.PORT || 3001);
 }
 bootstrap();
