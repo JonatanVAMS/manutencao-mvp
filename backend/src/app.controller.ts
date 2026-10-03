@@ -6,7 +6,7 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getHello() { // <-- A correção foi apenas apagar o ": string" que estava aqui!
+  getHello() { 
     return this.appService.getHello();
   }
 }

@@ -9,11 +9,11 @@ export default function OrdensServicoPage() {
   const [equipamentoId, setEquipamentoId] = useState("");
   const [busca, setBusca] = useState("");
 
-  // Estados do Modal Profissional
+  
   const [modalAberto, setModalAberto] = useState(false);
   const [ordemSendoEncerrada, setOrdemSendoEncerrada] = useState<number | null>(null);
   
-  // Campos do Formulário de Encerramento
+ 
   const [resolucao, setResolucao] = useState("");
   const [tempoReparo, setTempoReparo] = useState("");
   const [material, setMaterial] = useState("");
@@ -61,7 +61,7 @@ export default function OrdensServicoPage() {
     }
   };
 
-  // Abre a tela profissional em vez do prompt antigo
+  
   const abrirModalEncerramento = (id: number) => {
     setOrdemSendoEncerrada(id);
     setResolucao("");
@@ -71,7 +71,7 @@ export default function OrdensServicoPage() {
     setModalAberto(true);
   };
 
-  // Envia todos os dados do laudo para a nuvem
+  
   const confirmarEncerramento = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!ordemSendoEncerrada) return;
@@ -106,7 +106,7 @@ export default function OrdensServicoPage() {
   return (
     <div className="min-h-screen bg-slate-950 p-8 font-sans text-slate-100 relative">
       
-      {/* MODAL DE ENCERRAMENTO PROFISSIONAL */}
+      {/* MODAL DE ENCERRAMENTO */}
       {modalAberto && (
         <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="bg-slate-900 border border-slate-700 rounded-3xl shadow-2xl w-full max-w-2xl overflow-hidden transform transition-all">
@@ -280,7 +280,7 @@ export default function OrdensServicoPage() {
               </div>
             </div>
 
-            {/* Histórico Melhorado */}
+            {/* Histórico  */}
             <div className="bg-slate-900 p-8 rounded-3xl shadow-lg border border-slate-800">
               <h2 className="text-xl font-bold text-slate-400 mb-6">Histórico de Resoluções</h2>
               <div className="flex flex-col gap-5">
