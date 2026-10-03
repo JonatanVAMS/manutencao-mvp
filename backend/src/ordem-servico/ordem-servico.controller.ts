@@ -16,13 +16,8 @@ export class OrdemServicoController {
     return this.ordemServicoService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.ordemServicoService.findOne(+id);
-  }
-
   @Patch(':id')
-  update(@Param('id') id: string, @Body() data: Prisma.OrdemServicoUncheckedUpdateInput) {
+  update(@Param('id') id: string, @Body() data: Prisma.OrdemServicoUpdateInput) {
     return this.ordemServicoService.update(+id, data);
   }
 

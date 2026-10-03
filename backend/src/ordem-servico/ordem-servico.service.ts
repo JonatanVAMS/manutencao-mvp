@@ -4,7 +4,7 @@ import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class OrdemServicoService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) {}
 
   create(data: Prisma.OrdemServicoUncheckedCreateInput) {
     return this.prisma.ordemServico.create({ data });
@@ -13,17 +13,11 @@ export class OrdemServicoService {
   findAll() {
     return this.prisma.ordemServico.findMany({
       include: { equipamento: true },
+      orderBy: { id: 'desc' }
     });
   }
 
-  findOne(id: number) {
-    return this.prisma.ordemServico.findUnique({
-      where: { id },
-      include: { equipamento: true },
-    });
-  }
-
-  update(id: number, data: Prisma.OrdemServicoUncheckedUpdateInput) {
+  update(id: number, data: Prisma.OrdemServicoUpdateInput) {
     return this.prisma.ordemServico.update({ where: { id }, data });
   }
 

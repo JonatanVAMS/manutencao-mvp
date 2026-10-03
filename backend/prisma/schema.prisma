@@ -8,16 +8,20 @@ datasource db {
 }
 
 model Equipamento {
-  id        Int      @id @default(autoincrement())
+  id        Int            @id @default(autoincrement())
   nome      String
-  tag       String   @unique
+  tag       String
   ordens    OrdemServico[]
+  createdAt DateTime       @default(now())
 }
 
 model OrdemServico {
-  id            Int      @id @default(autoincrement())
+  id            Int         @id @default(autoincrement())
   descricao     String
-  status        String   @default("ABERTA")
+  resolucao     String?
+  status        String      @default("PENDENTE")
   equipamentoId Int
-  equipamento   Equipamento @relation(fields: [equipamentoId], references: [id])
+  equipamento   Equipamento @relation(fields: [equipamentoId], references: [id], onDelete: Cascade)
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
 }
